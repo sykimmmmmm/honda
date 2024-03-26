@@ -200,7 +200,7 @@ a{
     font-size: 1.6rem;
     text-transform: uppercase;
 }
-.swiper-slide-active .model-text,.swiper-slide-active .model-name{
+.swiper-slide-active .model-text,.swiper-slide-active .model-name,.swiper-slide-active .car-awards{
     display: block;
 }
 .model-car{
@@ -208,6 +208,16 @@ a{
     height: 100%;
     background: url(/imgs/m1-car5-hv.png)no-repeat;
     background-position: center;
+}
+.car-awards{
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 180px;
+    width: 100px;
+    height: 100px;
+    background: url(/imgs/Car_of_Year.png);
+    background-size: cover;
 }
 .model-car2{
     text-align: center;
@@ -382,7 +392,6 @@ a{
     margin-top: 100px;
     padding: 10px 1.4vw;
     width: 100%;
-    height: 900px;
 }
 #purchase h3{
     font-size: 5rem;
@@ -392,7 +401,7 @@ a{
 .pc{
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 900px;
 }
 .pc-img{
     width: 50%;
@@ -457,6 +466,39 @@ a{
     background-color: #000;
 }
 
+#community{
+    margin-top: 100px;
+    padding: 10px 1.4vw;
+    width: 100%;
+}
+.cm-container{
+    width: 100%;
+
+}
+.swiper3{
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid red;
+}
+.swiper-container{
+    width: 100%;
+}
+.swiper-slide{
+    width: 450px;
+    height: 500px;
+    border: 1px solid green;
+}
+.swiper3 .item{
+    width: 100%;
+    height: 100%;
+    border: 1px solid green;
+}
+.swiper3 .item-img{
+    width: 100%;
+
+    height: 80%;
+    background: url(/imgs/mcom-p1.jpg);
+}
 
 
 
