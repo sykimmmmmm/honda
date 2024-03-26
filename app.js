@@ -185,10 +185,17 @@ function modelSlide(){
 
     let swiper = new Swiper('.swiper2',{
         slidePerView:1,
-        spaceBetween: -50,
-        centeredSlides: true,
-        loop: true,
-        autoplay:false,
+        loop: false,
+	    effect: "coverflow",
+	    centeredSlides: true,
+	    spaceBetween: 500,
+	    coverflowEffect: {
+		rotate: 0,
+		stretch: 0,
+		depth: 400,
+		modifier: 1,
+		slideShadows: false
+	    },
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev"

@@ -1,0 +1,7 @@
+[{"name":"All new Accord","name2":"Turbo","type":"가솔린","출시일":"2023-10-17","배기량":"1498cc","최고출력":"190ps/6000rpm","외장컬러":"Crystal Black","연비":"12.9km/L","carOfYear":false,"img_url":"/imgs/accord-turbo.png"},
+{"name":"All new Accord","name2":"Hybrid","type":"하이브리드","출시일":"2023-10-17","배기량":"1993cc","최고출력":"147ps/6100rpm","외장컬러":"Canyon River Blue","연비":"16.7km/L","carOfYear":true,"img_url":"/imgs/accord-hybrid.png"},
+{"name":"All new CR-V","name2":"Turbo","type":"가솔린","출시일":"2023-04-11","배기량":"1498cc","최고출력":"190ps/6000rpm","외장컬러":"Meteoroid Gray","연비":"12.1km/L","carOfYear":false,"img_url":"/imgs/cr-v-turbo.png"},
+{"name":"All new CR-V","name2":"Hybrid","type":"하이브리드","출시일":"2023-04-11","배기량":"1993cc","최고출력":"147ps/6100rpm","외장컬러":"Urban Gray","연비":"14.0km/L","carOfYear":false,"img_url":"/imgs/cr-v-hybrid.png"},
+{"name":"Odyssey","type":"가솔린","출시일":"2017-10-23","배기량":"3471cc","최고출력":"284ps/6000rpm","외장컬러":"Platium White Pearl","연비":"9.0km/L","carOfYear":false,"img_url":"/imgs/odessey.png"},
+{"name":"Pilot","type":"가솔린","출시일":"2023-08-29","배기량":"3471cc","최고출력":"289ps/6100rpm","외장컬러":"Modern Steel Metallic","연비":"8.4km/L","carOfYear":false,"img_url":"/imgs/pilot.png"}
+]
