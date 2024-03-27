@@ -1,44 +1,56 @@
 // const { default: Swiper } = require("swiper")
+gsap.registerPlugin(ScrollTrigger)
 
 const header = document.getElementById('header') 
 const banner = document.querySelector('.banner1')
+const footer = document.getElementById('footer')
 
+let scrollHeight = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+)
 
+const locoScroll = new LocomotiveScroll({
+    el: document.querySelector('.locomotive-scroll'),
+    smooth: true,
+    getDirection: true,  
+    tablet: {
+        smooth: false,
+        breakpoint: 0,
+        getDirection: true,
+    }     
+})
+locoScroll.on("scroll", ScrollTrigger.update);
+ScrollTrigger.scrollerProxy(".locomotive-scroll", {
+    scrollTop(value) {
+        return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+        return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+    },
+    pinType: document.querySelector(".locomotive-scroll").style.transform ? "transform" : "fixed"
+});
+locoScroll.on('scroll',(instance)=>{  
+    const header = document.getElementById('header');
+    let headerHeight = header.getBoundingClientRect().height;        
+    if(instance.direction === 'down'){
+        header.classList.add('down')
+    } else{
+        header.classList.remove('down')
+    } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function bannerHide(elem){
-    let distanceToTop = window.pageYOffset+elem.getBoundingClientRect().top
-    let elemHeight = elem.offsetHeight
-    let scrollTop = document.documentElement.scrollTop
-    let opacity = 1
-    // console.log(distanceToTop, elemHeight,scrollTop)
-
-    if(scrollTop>distanceToTop){
-        opacity = 1-(scrollTop-distanceToTop)/elemHeight
-        // console.log(opacity)
+    var scrTop = scrollHeight - window.innerHeight - footer.offsetHeight  
+    if(scrTop<0){
+        document.querySelector('.qAside').classList.add('hv')
+    } else{
+        document.querySelector('.qAside').classList.remove('hv') 
     }
-    if(opacity>=0){
-        banner.style.opacity=opacity
-    }
-    
-}
+    console.log(scrTop)
+})
+
+
+
 function headerHide(){
     if(document.documentElement.scrollTop>0){
         header.style.transform= `translateY(-100px)`
@@ -53,17 +65,7 @@ function headerMove(e){
 }
 
 
-function scrollHandler(){
-    bannerHide(banner)
-}
 
-
-
-
-
-headerHide()
-window.addEventListener('wheel',headerMove)
-window.addEventListener('scroll',scrollHandler)
 
 
 
@@ -181,7 +183,7 @@ function mainSlide(){
         }
     })
 }
-mainSlide()
+
 
 function modelSlide(){
     let swiperSlides = document.querySelectorAll('swiper2 .swiper-slide')
@@ -210,7 +212,7 @@ function modelSlide(){
 
     })
 }
-modelSlide()
+
 
 function communitySlide(){
     var option = {
@@ -220,12 +222,10 @@ function communitySlide(){
         scrollbar: {
             el: ".swiper-scrollbar",
         },    
-        mousewheel: true,
     }
     var communitySwiper = new Swiper(".swiper3", option);
    
 }
-communitySlide()
 
 function communityMo(){
     const horizontalSections = gsap.utils.toArray('.horizontalDty');   
@@ -250,5 +250,57 @@ function communityMo(){
             }
         });
     });
-}  
-communityMo()
+}   
+
+function banner1Act(){
+    ScrollTrigger.create({        
+        start: 'top -100',
+        trigger:'.banner',
+        end: '+=50%',
+        scroller:".locomotive-scroll",
+        pin: '.banner1',
+        pinSpacing: false,
+        pinType: 'transform',        
+    });    
+    gsap.to('.banner1__pin',{
+        duration:2,
+        opacity:0,
+        scrollTrigger:{
+            //pin:true,
+            scroller:".locomotive-scroll",
+            trigger:'.banner2',
+            pinType: 'transform',
+            start: 'top 55%',
+            end: 'top top',
+            scrub:true,
+            //markers: true,
+        }
+    })
+    gsap.to('.banner1__left',{
+        duration:2,
+        paddingBottom:'100px',
+        scrollTrigger:{
+            //pin:true,
+            scroller:".locomotive-scroll",
+            trigger:'.banner2',
+            pinType: 'transform',
+            start: 'top 55%',
+            end: 'top top',
+            scrub:true,
+            //markers: true,
+        }
+    })
+}
+function eventHandler(){
+    headerHide()
+    banner1Act()
+    mainSlide()
+    modelSlide()
+    communitySlide()
+    communityMo()
+
+    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());      
+    ScrollTrigger.refresh();
+}
+window.addEventListener('load',eventHandler)
+window.addEventListener('wheel',headerMove)

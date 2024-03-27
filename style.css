@@ -15,9 +15,9 @@
 }
 html{
     font-family: 'Noto Sans KR', sans-serif;
-    scroll-behavior: smooth;
     line-height: 1;
 }
+
 body{
     /* width: 100%; */
     max-width: 100vw;
@@ -25,7 +25,6 @@ body{
     margin: 0;
     box-sizing: border-box;
     /* background-color: #000; */
-    overflow-x: hidden;
 }
 a{
     color: black;
@@ -89,15 +88,16 @@ a{
 /* main */
 .banner{
     /* max-width: 100%; */
+    min-height: 6px;
     margin-top: 100px;
     width: 100%;
+    background-color: #000;
 }
-.banner1{
+/* .banner1{
     height: 30vw;
     background: url(/imgs/main-top-bg240229.jpg) no-repeat 50% 100%;
     background-size: cover;
     position: relative;
-    /* animation: hide 1s forwards; */
 }
 .banner1-btn{
     display: flex;
@@ -123,6 +123,54 @@ a{
 .banner1-btn:nth-child(2){
     left: 60%;
     transform: translateX(-60%);
+} */
+.banner .pin-spacer{
+    height: 600px;
+}
+.banner1 {
+    position: relative;
+    transform: translateY(0) !important;
+    padding: 6.13vw 3.13vw 5.86vw 3.13vw;
+    background-color: #000;
+    color: #fff;
+    padding: 97px 0 0;
+}
+.advert{
+    display: block;
+    height: 600px;
+    background: url(/imgs/main-top-bg240229.jpg) no-repeat 50% 100%;
+    background-size: cover;
+}
+.advert__desc {
+    display: flex;
+}
+.advert__desc .desc1 {
+    position: relative;
+}
+.advert__desc .desc1 .btns {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 64px;
+}
+.advert__desc .main_btn {
+    height: 64px;
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    color: #fff;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #E7021D;
+    height: 68px;
+    vertical-align: top;
+}
+
+.main_btn span {
+    display: block;
+    padding-right: 28px;
+    background: url(/imgs/btn-arr-linkw.png) no-repeat 100% 50%;
 }
 
 
@@ -728,22 +776,56 @@ a{
     font-size: 41px;
 }
 
-
-
-
-
-
-
-
-
-@keyframes hide {
-    0%{
-        opacity: 1;
-    }
-    50%{
-        opacity: .5;
-    }
-    100%{
-        opacity: 0;
-    }
+.qAside {
+    position: fixed;
+    right: 16px;
+    bottom: 100px;
+    z-index: 100;
+    opacity: 1;
+    transition: all 0.5s;
 }
+
+.qAside__buy {
+    width: 64px;
+    height: 84px;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    padding: 18px 0 10px;
+    display: inline-block;
+}
+.qAside__buy .ico {
+    animation: carAct2 4s 0s infinite;
+    display: block;
+    width: 81px;
+    height: 28px;
+    background: url(imgs/car.png) no-repeat 50% 50% ;
+    position: relative;
+    left: 20%;
+}
+.qAside__buy .txt {
+    display: block;
+    font-size: 13px;
+    line-height: 1.385;
+    margin-top: 10px;
+    text-align: center;
+}
+.qAside__cs {
+    display: block;
+    width: 64px;
+    height: 64px;
+    background: #2073B7 url(imgs/ico-cs.png) no-repeat 50% 50%;
+    font-size: 0;
+    margin-top: 10px;
+}
+.qAside.hv {
+    opacity: 0;
+}
+
+@keyframes carAct2{
+    0%{left:100%}
+    15%{left:20%}
+    50%{left:20%}
+    85%{left:20%}
+    100%{left:-150%}
+  }
