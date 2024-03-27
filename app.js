@@ -39,9 +39,12 @@ function bannerHide(elem){
     }
     
 }
-
+function headerHide(){
+    if(document.documentElement.scrollTop>0){
+        header.style.transform= `translateY(-100px)`
+    }
+}
 function headerMove(e){
-    // console.log(e.deltaY)
     if(e.deltaY>0){
         header.style.transform= `translateY(-100px)` 
     }else{
@@ -58,7 +61,7 @@ function scrollHandler(){
 
 
 
-
+headerHide()
 window.addEventListener('wheel',headerMove)
 window.addEventListener('scroll',scrollHandler)
 
@@ -208,3 +211,44 @@ function modelSlide(){
     })
 }
 modelSlide()
+
+function communitySlide(){
+    var option = {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        freeMode: true,
+        scrollbar: {
+            el: ".swiper-scrollbar",
+        },    
+        mousewheel: true,
+    }
+    var communitySwiper = new Swiper(".swiper3", option);
+   
+}
+communitySlide()
+
+function communityMo(){
+    const horizontalSections = gsap.utils.toArray('.horizontalDty');   
+    horizontalSections.forEach(function (sec, i) {	
+        var thisPinWrap = sec.querySelector('.staticw');
+        var thisAnimWrap = thisPinWrap.querySelector('.swiper-wrapper');      
+        var getToValue = () => -(thisAnimWrap.scrollWidth - window.innerWidth + staticWht);
+        var staticWht = (window.innerWidth - thisPinWrap.clientWidth);
+        gsap.fromTo(thisAnimWrap, { 
+            x: () => thisAnimWrap.classList.contains('to-right') ? 0 : getToValue()}, { 
+            x: () => thisAnimWrap.classList.contains('to-right') ? getToValue() : 0, 
+            ease: "none",
+            scrollTrigger: {
+                trigger: sec,	
+                scroller:".locomotive-scroll",	
+                start: "top top",
+                end: () => "+=" + (thisAnimWrap.scrollWidth - window.innerWidth + staticWht),                
+                pin: thisPinWrap,
+                invalidateOnRefresh: true,
+                anticipatePin: 1,
+                scrub: true,                
+            }
+        });
+    });
+}  
+communityMo()
