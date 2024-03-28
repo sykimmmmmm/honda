@@ -209,7 +209,6 @@ function modelSlide(){
             el: '.swiper-pagination',
             clickable: true
         }
-
     })
 }
 
@@ -261,7 +260,7 @@ function banner1Act(){
         pin: '.banner1',
         pinSpacing: false,
         pinType: 'transform',        
-    });    
+    })
     gsap.to('.banner1__pin',{
         duration:2,
         opacity:0,
